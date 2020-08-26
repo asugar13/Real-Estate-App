@@ -4,15 +4,30 @@
   "description": "Real Estate App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --port 8080",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "author": "Asier Ugarteche",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@babel/runtime": "^7.11.2",
+    "babel-loader": "^8.1.0",
     "cookie-session": "^1.4.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^4.3.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
   }
 }

@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 // var user_routes = require('../routes/user_routes');
 
 var express = require('express');
@@ -19,10 +17,10 @@ app.use(express.static(__dirname + '/assets/scripts'));
 app.use(express.static(__dirname + '/assets/css'));
 
 //new line
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + '/../dist'));
 
 app.engine('.html', require('ejs').__express);
-app.set('views', __dirname +'/../public');
+app.set('views', __dirname +'/../dist');
 app.set('view engine', 'html');
 
 // The request body is received on GET or POST.
