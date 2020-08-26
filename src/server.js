@@ -1,6 +1,6 @@
 'use strict';
 
-// var user_routes = require('../routes/user_routes');
+var user_routes = require('../routes/user_routes');
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -36,6 +36,8 @@ app.get('/', function(req, res) {
         errors: ''
     });
 });
+
+app.get('/houses', user_routes.DisplayHouses);
 
 // Start the server
 app.listen(3000);

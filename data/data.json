@@ -1,0 +1,23 @@
+[
+    {
+        "borough": "Westminster",
+        "square_meters": 120,
+        "bedrooms": 2,
+        "toilets": 1,
+        "description": "Amazing place!"
+    },
+    {
+        "borough": "Camden",
+        "square_meters": 90,
+        "bedrooms": 3,
+        "toilets": 2,
+        "description": "Comfy loft in hip area."
+    },
+    {
+        "borough": "Trafalgar Square",
+        "square_meters": 70,
+        "bedrooms": 1,
+        "toilets": 1,
+        "description": "Small apartment in city centre"
+    }
+]
