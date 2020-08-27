@@ -9,13 +9,17 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+const regeneratorRuntime = require("regenerator-runtime"); //problem with async functions and webpack without this
+
+
 export function Row(props) {
     return (
       <TableRow>
-        <TableCell> {props.name}</TableCell>
-        <TableCell> {props.amount}</TableCell>
-        <TableCell> {props.country}</TableCell>
-        <TableCell> {props.memo} </TableCell>
+        <TableCell> {props.borough}</TableCell>
+        <TableCell> {props.description}</TableCell>
+        <TableCell> {props.square_meters}</TableCell>
+        <TableCell> {props.bedrooms} </TableCell>
+        <TableCell> {props.toilets} </TableCell>
       </TableRow>
     );
   }
@@ -24,28 +28,32 @@ export function Row(props) {
     constructor(props) {
       super(props);
       this.state = {
-        users: []
+        houses: []
       };
     }
 
-    renderRow(user) {
-      console.log('calling renderrow on ' + user.username);
+    renderRow(house) {
+      //console.log('calling renderrow on ' + user.username);
       return (
-        <Row name={user.username}
-            amount={user.amount}
-            country={user.country}
-            memo={user.memo}
+        <Row borough={house.borough}
+            description={house.description}
+            square_meters={house.square_meters}
+            bedrooms={house.bedrooms}
+            toilets={house.toilets}
             />
           );
     }
 
     renderRows(userList) {
-    return userList.map(user=>this.renderRow(user))
+    return userList.map(house=>this.renderRow(house))
     }
 
-    componentDidMount() {
-      fetch("/houses").then(response => response.json())
-      .then(data => this.setState({users: data}))
+    async componentDidMount() {
+      const response = await fetch("/houses");
+      const json = await response.json();
+      this.setState({houses: json});
+      // fetch("/houses").then(response => response.json())
+      // .then(data => this.setState({houses: data}))
     }
 
     render() {
@@ -59,14 +67,16 @@ export function Row(props) {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>User</TableCell>
-                <TableCell>Amount (USD)</TableCell>
-                <TableCell>Country</TableCell>
-                <TableCell>Memo</TableCell>
+                <TableCell>Borough</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Square Meters</TableCell>
+                <TableCell>Bedrooms</TableCell>
+                <TableCell>Toilets</TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
-                {this.renderRows(this.state.users)}
+                {this.renderRows(this.state.houses)}
             </TableBody>
           </Table>
         </TableContainer>

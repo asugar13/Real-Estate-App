@@ -23,6 +23,7 @@ app.engine('.html', require('ejs').__express);
 app.set('views', __dirname +'/../dist');
 app.set('view engine', 'html');
 
+
 // The request body is received on GET or POST.
 // A middleware that just simplifies things a bit.
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -37,6 +38,13 @@ app.get('/', function(req, res) {
     });
 });
 
+app.get('/addhouse', function(req, res) {
+        res.render('addhouse', {  // Note that .html is assumed.
+        errors: ''
+    });
+});
+
+app.post('/addhouse', user_routes.AddHouse);
 app.get('/houses', user_routes.DisplayHouses);
 
 // Start the server

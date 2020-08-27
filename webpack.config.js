@@ -5,7 +5,8 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    main: './src/index.js',
+    welcome: './src/page_loaders/welcome.js',
+    add_house: './src/page_loaders/addhouse.js',
   },
   module: {
     rules: [
@@ -58,7 +59,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./public/welcome.html",
       filename: "./welcome.html",
-      chunks: ['main']
+      chunks: ['welcome']
+    }),
+    new HtmlWebPackPlugin({
+      template: "./public/addhouse.html",
+      filename: "./addhouse.html",
+      chunks: ['add_house']
     })
   ]
 };
